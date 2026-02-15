@@ -15,7 +15,9 @@ const CONFIG = {
     coinValue: 10,
     distanceMultiplier: 1,
     speedBoostDuration: 3000,
-    speedBoostMultiplier: 2
+    speedBoostMultiplier: 2,
+    speedDisplayMultiplier: 10,
+    hitboxReduction: 0.15
 };
 
 // Game State
@@ -253,7 +255,7 @@ class EscapeRoadGame {
     updateHUD() {
         document.getElementById('scoreDisplay').textContent = Math.floor(this.score);
         document.getElementById('coinsDisplay').textContent = this.coins;
-        document.getElementById('speedDisplay').textContent = Math.floor(this.speed * 10) + ' km/h';
+        document.getElementById('speedDisplay').textContent = Math.floor(this.speed * CONFIG.speedDisplayMultiplier) + ' km/h';
     }
     
     updateHighScoreDisplay() {
@@ -498,13 +500,12 @@ class EscapeRoadGame {
     }
     
     checkCollisions() {
-        // Reduce collision box by 15% for more forgiving gameplay
-        const hitboxReduction = 0.15;
+        // Reduce collision box for more forgiving gameplay
         const playerBox = {
-            x: this.player.x - (this.player.width * (1 - hitboxReduction)) / 2,
-            y: this.player.y - (this.player.height * (1 - hitboxReduction)) / 2,
-            width: this.player.width * (1 - hitboxReduction),
-            height: this.player.height * (1 - hitboxReduction)
+            x: this.player.x - (this.player.width * (1 - CONFIG.hitboxReduction)) / 2,
+            y: this.player.y - (this.player.height * (1 - CONFIG.hitboxReduction)) / 2,
+            width: this.player.width * (1 - CONFIG.hitboxReduction),
+            height: this.player.height * (1 - CONFIG.hitboxReduction)
         };
         
         // Check traffic collisions
