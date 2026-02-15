@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Escape Road - An exciting 3D endless driving game. Navigate through traffic, collect coins, and escape as far as you can!">
+    <title>Escape Road - Unblocked Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Menu Screen -->
+    <div id="mainMenu" class="screen active">
+        <div class="menu-container">
+            <div class="game-logo">
+                <h1>🏎️ ESCAPE ROAD</h1>
+                <div class="logo-subtitle">Endless Driving Adventure</div>
+            </div>
+            
+            <div class="game-description">
+                <p>Navigate through traffic, avoid obstacles, and escape as far as you can! Collect coins and power-ups while dodging police cars in this thrilling 3D endless driving game.</p>
+            </div>
+            
+            <div class="high-score-display">
+                <div class="score-label">🏆 High Score</div>
+                <div class="score-value" id="menuHighScore">0</div>
+            </div>
+            
+            <button class="btn btn-play" id="playButton">
+                <span>▶ PLAY NOW</span>
+            </button>
+            
+            <div class="instructions">
+                <h3>📋 How to Play</h3>
+                <div class="controls-grid">
+                    <div class="control-item">
+                        <div class="control-icon">⌨️</div>
+                        <div class="control-text">
+                            <strong>Desktop</strong><br>
+                            Arrow Keys or WASD
+                        </div>
+                    </div>
+                    <div class="control-item">
+                        <div class="control-icon">📱</div>
+                        <div class="control-text">
+                            <strong>Mobile</strong><br>
+                            Tap Left/Right or Swipe
+                        </div>
+                    </div>
+                </div>
+                <div class="game-tips">
+                    <h4>Game Tips:</h4>
+                    <ul>
+                        <li>🪙 Collect coins to increase your score</li>
+                        <li>⚡ Grab speed boosts for extra points</li>
+                        <li>🚗 Avoid traffic and obstacles</li>
+                        <li>🚓 Escape from police cars chasing you</li>
+                        <li>⏸️ Press SPACE or ESC to pause</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <button class="btn-small" id="fullscreenBtn">⛶ Fullscreen</button>
+                <button class="btn-small" id="muteBtn">🔊 Sound</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Game Screen -->
+    <div id="gameScreen" class="screen">
+        <div class="game-container">
+            <canvas id="gameCanvas"></canvas>
+            
+            <!-- Game HUD -->
+            <div class="hud">
+                <div class="hud-item">
+                    <div class="hud-label">Score</div>
+                    <div class="hud-value" id="scoreDisplay">0</div>
+                </div>
+                <div class="hud-item">
+                    <div class="hud-label">Coins</div>
+                    <div class="hud-value" id="coinsDisplay">0</div>
+                </div>
+                <div class="hud-item">
+                    <div class="hud-label">Speed</div>
+                    <div class="hud-value" id="speedDisplay">0</div>
+                </div>
+            </div>
+            
+            <!-- Mobile Controls -->
+            <div class="mobile-controls" id="mobileControls">
+                <button class="control-btn left" id="leftBtn">◀</button>
+                <button class="control-btn right" id="rightBtn">▶</button>
+            </div>
+            
+            <!-- Pause Button -->
+            <button class="pause-btn" id="pauseBtn">⏸️</button>
+        </div>
+    </div>
+    
+    <!-- Pause Screen -->
+    <div id="pauseScreen" class="screen overlay">
+        <div class="modal">
+            <h2>⏸️ PAUSED</h2>
+            <div class="pause-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Score:</span>
+                    <span class="stat-value" id="pauseScore">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Coins:</span>
+                    <span class="stat-value" id="pauseCoins">0</span>
+                </div>
+            </div>
+            <button class="btn" id="resumeBtn">▶ Resume</button>
+            <button class="btn btn-secondary" id="pauseMenuBtn">🏠 Main Menu</button>
+        </div>
+    </div>
+    
+    <!-- Game Over Screen -->
+    <div id="gameOverScreen" class="screen overlay">
+        <div class="modal game-over-modal">
+            <h2>🏁 GAME OVER</h2>
+            <div class="final-stats">
+                <div class="stat-row">
+                    <span class="stat-label">Final Score:</span>
+                    <span class="stat-value highlight" id="finalScore">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Coins Collected:</span>
+                    <span class="stat-value" id="finalCoins">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Distance:</span>
+                    <span class="stat-value" id="finalDistance">0</span>
+                </div>
+                <div class="stat-row high-score-row">
+                    <span class="stat-label">🏆 High Score:</span>
+                    <span class="stat-value" id="gameOverHighScore">0</span>
+                </div>
+                <div id="newHighScore" class="new-high-score" style="display: none;">
+                    🎉 NEW HIGH SCORE! 🎉
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="btn" id="restartBtn">🔄 Play Again</button>
+                <button class="btn btn-secondary" id="menuBtn">🏠 Main Menu</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

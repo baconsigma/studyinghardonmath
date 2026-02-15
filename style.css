@@ -1,0 +1,563 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+/* Screen Management */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+/* Main Menu Styles */
+.menu-container {
+    max-width: 600px;
+    width: 90%;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+.game-logo h1 {
+    font-size: 3.5rem;
+    text-align: center;
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease infinite;
+    text-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+    margin-bottom: 10px;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.logo-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #48dbfb;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.game-description {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    line-height: 1.6;
+}
+
+.high-score-display {
+    background: linear-gradient(135deg, #feca57, #ff9ff3);
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(254, 202, 87, 0.3);
+}
+
+.score-label {
+    font-size: 1rem;
+    color: #1a1a2e;
+    font-weight: bold;
+}
+
+.score-value {
+    font-size: 2.5rem;
+    color: #1a1a2e;
+    font-weight: bold;
+}
+
+/* Buttons */
+.btn {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.btn-play {
+    background: linear-gradient(135deg, #48dbfb, #0abde3);
+    box-shadow: 0 10px 30px rgba(72, 219, 251, 0.4);
+    font-size: 1.5rem;
+    padding: 20px;
+    animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.btn-play:hover {
+    box-shadow: 0 15px 40px rgba(72, 219, 251, 0.6);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #747d8c, #57606f);
+    box-shadow: 0 10px 30px rgba(116, 125, 140, 0.4);
+}
+
+.btn-secondary:hover {
+    box-shadow: 0 15px 40px rgba(116, 125, 140, 0.6);
+}
+
+.btn-small {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    margin: 0 5px;
+}
+
+.btn-small:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Instructions */
+.instructions {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.instructions h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #feca57;
+    font-size: 1.5rem;
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.control-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.control-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.control-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.game-tips h4 {
+    color: #48dbfb;
+    margin-bottom: 10px;
+}
+
+.game-tips ul {
+    list-style: none;
+    padding: 0;
+}
+
+.game-tips li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-tips li:last-child {
+    border-bottom: none;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Game Screen Styles */
+.game-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #1a1a2e;
+}
+
+/* HUD */
+.hud {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 100;
+}
+
+.hud-item {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    min-width: 100px;
+}
+
+.hud-label {
+    font-size: 0.8rem;
+    color: #48dbfb;
+    margin-bottom: 5px;
+}
+
+.hud-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #feca57;
+}
+
+/* Mobile Controls */
+.mobile-controls {
+    display: none;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 100px;
+    z-index: 100;
+}
+
+.control-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(72, 219, 251, 0.3);
+    border: 3px solid rgba(72, 219, 251, 0.8);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.control-btn:active {
+    background: rgba(72, 219, 251, 0.6);
+    transform: scale(0.95);
+}
+
+/* Pause Button */
+.pause-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.pause-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Modal Styles */
+.modal {
+    background: rgba(26, 26, 46, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #feca57, #ff9ff3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Pause Screen */
+.pause-stats {
+    margin-bottom: 30px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: #48dbfb;
+    font-size: 1.1rem;
+}
+
+.stat-value {
+    color: #feca57;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Game Over Screen */
+.game-over-modal {
+    max-width: 600px;
+}
+
+.final-stats {
+    margin-bottom: 30px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-row .stat-label {
+    font-size: 1.1rem;
+    color: #48dbfb;
+}
+
+.stat-row .stat-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #feca57;
+}
+
+.stat-row .stat-value.highlight {
+    font-size: 2rem;
+    color: #ff6b6b;
+}
+
+.high-score-row {
+    background: rgba(254, 202, 87, 0.1);
+    border-color: rgba(254, 202, 87, 0.3);
+}
+
+.new-high-score {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #feca57;
+    font-weight: bold;
+    padding: 15px;
+    background: rgba(254, 202, 87, 0.2);
+    border-radius: 10px;
+    margin-top: 15px;
+    animation: celebration 0.5s ease infinite alternate;
+}
+
+@keyframes celebration {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-logo h1 {
+        font-size: 2.5rem;
+    }
+    
+    .logo-subtitle {
+        font-size: 1rem;
+    }
+    
+    .btn {
+        font-size: 1.1rem;
+        padding: 12px 30px;
+    }
+    
+    .btn-play {
+        font-size: 1.3rem;
+        padding: 18px;
+    }
+    
+    .controls-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hud {
+        gap: 10px;
+        top: 10px;
+    }
+    
+    .hud-item {
+        padding: 8px 15px;
+        min-width: 80px;
+    }
+    
+    .hud-label {
+        font-size: 0.7rem;
+    }
+    
+    .hud-value {
+        font-size: 1.2rem;
+    }
+    
+    .mobile-controls {
+        display: flex;
+    }
+    
+    .modal {
+        padding: 30px 20px;
+    }
+    
+    .modal h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-logo h1 {
+        font-size: 2rem;
+    }
+    
+    .score-value {
+        font-size: 2rem;
+    }
+    
+    .hud {
+        gap: 5px;
+        flex-wrap: wrap;
+        width: 90%;
+    }
+    
+    .hud-item {
+        padding: 5px 10px;
+        min-width: 70px;
+    }
+    
+    .hud-label {
+        font-size: 0.6rem;
+    }
+    
+    .hud-value {
+        font-size: 1rem;
+    }
+}
+
+/* Landscape Mode for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .menu-container {
+        max-height: 100vh;
+        font-size: 0.9rem;
+    }
+    
+    .game-logo h1 {
+        font-size: 2rem;
+        margin-bottom: 5px;
+    }
+    
+    .logo-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    
+    .game-description,
+    .instructions {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .btn {
+        padding: 10px 30px;
+        margin-bottom: 10px;
+    }
+}
+
+/* Loading Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
