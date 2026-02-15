@@ -79,9 +79,9 @@ Drive as far as possible while avoiding traffic and obstacles. Collect coins to 
 ├── index.html          # Main HTML file with game UI
 ├── style.css           # Complete styling and responsive design
 ├── game.js             # Game engine and logic
-├── assets/             # Assets folder (for future expansion)
-│   ├── images/         # Image assets
-│   └── sounds/         # Sound effects (optional)
+├── assets/             # Assets folder (ready for expansion)
+│   ├── images/         # (Ready for image assets)
+│   └── sounds/         # (Ready for sound effects)
 └── README.md           # This file
 ```
 

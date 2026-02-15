@@ -261,12 +261,21 @@ class EscapeRoadGame {
     }
     
     loadHighScore() {
-        const saved = localStorage.getItem('escapeRoadHighScore');
-        return saved ? parseFloat(saved) : 0;
+        try {
+            const saved = localStorage.getItem('escapeRoadHighScore');
+            return saved ? parseFloat(saved) : 0;
+        } catch (e) {
+            console.warn('Unable to load high score from localStorage:', e);
+            return 0;
+        }
     }
     
     saveHighScore() {
-        localStorage.setItem('escapeRoadHighScore', this.highScore.toString());
+        try {
+            localStorage.setItem('escapeRoadHighScore', this.highScore.toString());
+        } catch (e) {
+            console.warn('Unable to save high score to localStorage:', e);
+        }
     }
     
     toggleFullscreen() {
@@ -489,11 +498,13 @@ class EscapeRoadGame {
     }
     
     checkCollisions() {
+        // Reduce collision box by 15% for more forgiving gameplay
+        const hitboxReduction = 0.15;
         const playerBox = {
-            x: this.player.x - this.player.width / 2,
-            y: this.player.y - this.player.height / 2,
-            width: this.player.width,
-            height: this.player.height
+            x: this.player.x - (this.player.width * (1 - hitboxReduction)) / 2,
+            y: this.player.y - (this.player.height * (1 - hitboxReduction)) / 2,
+            width: this.player.width * (1 - hitboxReduction),
+            height: this.player.height * (1 - hitboxReduction)
         };
         
         // Check traffic collisions
